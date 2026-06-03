@@ -30,7 +30,7 @@ export interface Photo {
   title: string;
   alt: string;
   src: string;               // thumbnail path
-  fullSrc: string;           // full resolution path
+  fullSrc: string | string[]; // full resolution path (string array = album album)
   category: PhotoCategory;
   year: number;
 }
