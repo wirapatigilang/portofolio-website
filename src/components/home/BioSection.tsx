@@ -19,14 +19,14 @@ export default function BioSection() {
           id="bio-heading"
           className="text-2xl font-semibold mb-4 text-foreground"
         >
-          Tentang Saya
+          About Me
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed text-foreground/80 mb-8">
           {owner.bio}
         </p>
 
-        <CTAButton href="/contact">Hubungi Saya</CTAButton>
+        <CTAButton href="/contact">Contact Me</CTAButton>
       </div>
     </section>
   );

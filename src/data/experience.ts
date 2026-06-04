@@ -64,12 +64,12 @@ export const experiences: ExperienceEntry[] = [
   {
     id: 'exp-007',
     type: 'education',
-    title: 'SMA Negeri 3 Yogyakarta',
-    organization: 'SMA Negeri 3 Yogyakarta',
-    startDate: '2015-07',
-    endDate: '2018-05',
+    title: 'MAN 2 Mataram',
+    organization: 'MAN 2 Mataram',
+    startDate: '2020-07',
+    endDate: '2023-05',
     description:
-      'Jurusan IPA. Aktif di ekstrakurikuler Karya Ilmiah Remaja (KIR) dan Fotografi. Meraih juara 2 lomba fotografi tingkat provinsi DIY pada tahun 2017.',
+      'Jurusan IPA. Aktif di ekstrakurikuler Jurnalistik dan Olimpiade Informatika.',
   },
 ];
 

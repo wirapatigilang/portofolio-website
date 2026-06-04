@@ -1,0 +1,205 @@
+'use client';
+
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { contactFormSchema, type ContactFormData, type ContactSubject } from '@/lib/validations';
+import { owner } from '@/data/owner';
+import Button from '@/components/ui/Button';
+
+// ============================================================
+// Available Subject Options
+// ============================================================
+
+const SUBJECT_OPTIONS: ContactSubject[] = [
+  'Software Project',
+  'Photography',
+  'Videography',
+  'Video Editing',
+  'Other',
+];
+
+// ============================================================
+// ContactForm component
+// ============================================================
+
+export default function ContactForm() {
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    mode: 'onTouched', // Validate during input
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.message || 'Terjadi kesalahan saat mengirim pesan.');
+      }
+
+      setSubmitStatus('success');
+      reset(); // Clear the form fields
+
+      // Auto-reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+      
+    } catch (error) {
+      console.error('Contact submission error:', error);
+      setSubmitStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Terjadi kesalahan tidak terduga.');
+    }
+  };
+
+  return (
+    <form
+      id="contact-form"
+      className="flex w-full flex-col gap-6"
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate // Disable default HTML5 validation since we use Zod
+    >
+      {/* ── Status Messages ── */}
+      {submitStatus === 'success' && (
+        <div className="rounded-md bg-green-500/10 p-4 text-green-600 dark:text-green-400" role="alert" aria-live="polite">
+          <p className="flex items-center gap-2 font-medium">
+            Pesan Anda berhasil dikirim! Saya akan segera membalasnya.
+          </p>
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="rounded-md bg-red-500/10 p-4 text-red-600 dark:text-red-400" role="alert" aria-live="polite">
+          <p className="flex items-center gap-2 font-medium">
+            {errorMessage}
+          </p>
+        </div>
+      )}
+
+      {/* ── Full Name ── */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="fullName" className="text-sm font-medium text-foreground">
+          Nama Lengkap <span>*</span>
+        </label>
+        <input
+          id="fullName"
+          type="text"
+          className={`min-h-[44px] rounded-md border bg-transparent px-4 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
+            errors.fullName ? 'border-red-500' : 'border-foreground/20'
+          }`}
+          placeholder="Lalu Gilang Wirapati"
+          aria-invalid={errors.fullName ? 'true' : 'false'}
+          aria-describedby={errors.fullName ? 'fullName-error' : undefined}
+          {...register('fullName')}
+        />
+        {errors.fullName && (
+          <span id="fullName-error" className="text-sm text-red-500" role="alert">
+            {errors.fullName.message}
+          </span>
+        )}
+      </div>
+
+      {/* ── Email ── */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="email" className="text-sm font-medium text-foreground">
+          Email <span>*</span>
+        </label>
+        <input
+          id="email"
+          type="email"
+          className={`min-h-[44px] rounded-md border bg-transparent px-4 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
+            errors.email ? 'border-red-500' : 'border-foreground/20'
+          }`}
+          placeholder="gilang.wirapati@email.com"
+          aria-invalid={errors.email ? 'true' : 'false'}
+          aria-describedby={errors.email ? 'email-error' : undefined}
+          {...register('email')}
+        />
+        {errors.email && (
+          <span id="email-error" className="text-sm text-red-500" role="alert">
+            {errors.email.message}
+          </span>
+        )}
+      </div>
+
+      {/* ── Subject ── */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="subject" className="text-sm font-medium text-foreground">
+          Subjek Proyek <span>*</span>
+        </label>
+        <select
+          id="subject"
+          className={`min-h-[44px] rounded-md border bg-transparent px-4 py-2 text-foreground appearance-none focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
+            errors.subject ? 'border-red-500' : 'border-foreground/20'
+          }`}
+          aria-invalid={errors.subject ? 'true' : 'false'}
+          aria-describedby={errors.subject ? 'subject-error' : undefined}
+          {...register('subject')}
+        >
+          <option value="" disabled selected>-- Pilih Subjek --</option>
+          {SUBJECT_OPTIONS.map((sub) => (
+            <option key={sub} value={sub} className="text-background">
+              {sub}
+            </option>
+          ))}
+        </select>
+        {errors.subject && (
+          <span id="subject-error" className="text-sm text-red-500" role="alert">
+            {errors.subject.message}
+          </span>
+        )}
+      </div>
+
+      {/* ── Message ── */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="message" className="text-sm font-medium text-foreground">
+          Pesan <span>*</span>
+        </label>
+        <textarea
+          id="message"
+          rows={6}
+          className={`resize-y rounded-md border bg-transparent px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
+            errors.message ? 'border-red-500' : 'border-foreground/20'
+          }`}
+          placeholder={`Hai ${owner.name}, saya tertarik berkolaborasi dengan Anda pada proyek...`}
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+          {...register('message')}
+        />
+        {errors.message && (
+          <span id="message-error" className="text-sm text-red-500" role="alert">
+            {errors.message.message}
+          </span>
+        )}
+      </div>
+
+      {/* ── Submit Button ── */}
+      <Button
+        type="submit"
+        variant="primary"
+        size="lg"
+        disabled={submitStatus === 'submitting' || !isValid}
+        className="mt-2 w-full sm:w-auto"
+        aria-busy={submitStatus === 'submitting'}
+      >
+        {submitStatus === 'submitting' ? 'Mengirim...' : 'Kirim Pesan'}
+      </Button>
+    </form>
+  );
+}

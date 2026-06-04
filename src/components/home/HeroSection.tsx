@@ -71,7 +71,7 @@ export default function HeroSection({ owner }: HeroSectionProps) {
       <motion.div className="mx-auto flex max-w-4xl flex-col items-center gap-8 text-center" variants={containerVariants} initial="hidden" animate="visible">
         {/* ── Profile image ── */}
         <motion.div variants={imageVariants} className="relative h-32 w-32 overflow-hidden rounded-full ring-2 ring-foreground/10 sm:h-40 sm:w-40">
-          <Image src={owner.profileImage} alt={`Foto profil ${owner.name}`} fill sizes="(max-width: 640px) 128px, 160px" className="object-cover" priority />
+          <Image src={owner.profileImage} alt={`Foto profil ${owner.name}`} fill sizes="(max-width: 640px) 128px, 160px" className="object-cover" priority unoptimized />
         </motion.div>
 
         {/* ── Name ── */}
