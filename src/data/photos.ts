@@ -30,4 +30,22 @@ export const photos: Photo[] = [
     category: "Portrait",
     year: 2025,
   },
+
+  {
+    id: "photo-004",
+    title: "Sam Po Kong - Semarang",
+    alt: "",
+    src: "/images/photos/street-1/sampokong-1.jpg",
+    fullSrc: [
+      "/images/photos/street-1/sampokong-1.jpg",
+      "/images/photos/street-1/sampokong-2.jpg",
+      "/images/photos/street-1/sampokong-3.jpg",
+      "/images/photos/street-1/sampokong-4.jpg",
+      "/images/photos/street-1/sampokong-5.jpg",
+      "/images/photos/street-1/sampokong-6.jpg",
+    ],
+
+    category: "Street",
+    year: 2025,
+  },
 ];
