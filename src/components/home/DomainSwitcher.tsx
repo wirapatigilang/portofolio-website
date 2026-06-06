@@ -43,7 +43,7 @@ const DOMAINS: DomainEntry[] = [
   {
     label: 'Software Engineering',
     description:
-      'Proyek web & mobile, tech stack, dan pengalaman membangun produk digital.',
+      'Web & Mobile Projects, Technology Stack, and Digital Product Development Experience.',
     href: '/software',
     icon: (
       <svg
@@ -66,7 +66,7 @@ const DOMAINS: DomainEntry[] = [
   {
     label: 'Creative Work',
     description:
-      'Portofolio fotografi, videografi, dan video editing — karya visual yang bercerita.',
+      'Photography, videography, and video editing portfolio — compelling visual storytelling.',
     href: '/creative',
     icon: (
       <svg
@@ -164,7 +164,7 @@ export default function DomainSwitcher() {
                 ].join(' ')}
                 aria-hidden="true"
               >
-                Lihat portofolio
+                See portofolio
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

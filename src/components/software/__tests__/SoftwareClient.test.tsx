@@ -5,7 +5,7 @@ import { SoftwareClient } from "../SoftwareClient";
 
 // Mock the data
 vi.mock("@/data/projects", () => ({
-  softwareProjects: [
+  projects: [
     {
       id: "p1",
       name: "Web Project 1",
@@ -54,7 +54,7 @@ describe("SoftwareClient", () => {
     const emptyFilter = screen.getByRole("button", { name: "Open Source" });
     await userEvent.click(emptyFilter);
 
-    expect(screen.getByText(/Tidak ada proyek ditemukan untuk kategori Open Source/i)).toBeInTheDocument();
+    expect(screen.getByText(/not found for this category/i)).toBeInTheDocument();
   });
 
   it("opens ProjectModal when ProjectCard is clicked", async () => {

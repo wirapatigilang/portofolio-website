@@ -47,21 +47,17 @@ const EmptyState: React.FC<EmptyStateProps> = ({
         .filter(Boolean)
         .join(' ')}
     >
-      {/* Icon — decorative */}
-      <span aria-hidden="true" className="text-5xl select-none">
-        🔍
-      </span>
+
 
       {/* Message */}
       <p className="text-lg font-medium text-foreground/80">
-        Tidak ada{' '}
         <span className="font-semibold text-foreground">{itemLabel}</span>{' '}
-        ditemukan untuk kategori ini.
+        not found for this category.
       </p>
 
       {/* Reset button */}
       <Button variant="secondary" size="md" onClick={onReset}>
-        Tampilkan Semua
+        See All
       </Button>
     </div>
   );
