@@ -32,7 +32,7 @@ export const videos: Video[] = [
     title: "Sambutan Ketua dan Wakil Ketua ODM Undip 2025",
     description:
       "Edited the official welcoming video featuring the Chairman and Vice Chairman of Orientasi Diponegoro Muda (ODM) Undip 2025. Focused on establishing a dynamic pace and compelling visual narrative to keep thousands of incoming freshmen engaged. Responsible for assembling raw footage, synchronizing audio, and executing precise cuts to deliver an inspiring, energetic message that perfectly captured the grand scale of the university's flagship orientation event.",
-    thumbnail: "/images/videos/thumbnails/karsa.jpg",
+    thumbnail: "/images/videos/thumbnails/sambutan-ketua.jpg",
     embedUrl: "https://www.youtube.com/embed/ly5FleEGXRU",
     externalUrl: "https://www.youtube.com/watch?v=ly5FleEGXRU",
     category: "Event",
