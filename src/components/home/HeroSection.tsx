@@ -87,14 +87,12 @@ export default function HeroSection({ owner }: HeroSectionProps) {
         {/* ── Domain badges ── */}
         <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-3" aria-label="Bidang keahlian" role="group">
           <span className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground">
-            <span aria-hidden="true">💻</span>
             Software Engineering
           </span>
           <span className="text-foreground/30" aria-hidden="true">
             &amp;
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground">
-            <span aria-hidden="true">🎨</span>
             Creative Work
           </span>
         </motion.div>

@@ -6,8 +6,8 @@ import { AboutClient } from '@/components/about/AboutClient';
 
 export const metadata: Metadata = generateAppMetadata({
   title: 'About | Gilang Wirapati',
-  description: 'Mengenal lebih dekat Gilang Wirapati — pengalaman, perjalanan, dan filosofi kerja.',
-  url: 'https://gilangwirapati.com/about',
+  description: 'Get to know Gilang Wirapati: Dive into the experiences, journey, and work philosophy shaping my creative and technical ventures.',
+  url: 'https://gilangwirapati.vercel.app/about',
 });
 
 export default function AboutPage() {

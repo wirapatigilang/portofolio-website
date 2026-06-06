@@ -68,7 +68,7 @@ export function AboutClient({ owner, experiences }: AboutClientProps) {
             variants={itemVariants} 
             className="mb-4 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl bg-gradient-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent"
           >
-            Tentang Saya
+            About Me
           </motion.h1>
           <motion.p 
             variants={itemVariants} 
@@ -80,7 +80,7 @@ export function AboutClient({ owner, experiences }: AboutClientProps) {
             variants={itemVariants} 
             className="flex flex-wrap items-center justify-center gap-4 md:justify-start"
           >
-            <CTAButton href={`mailto:${owner.email}`}>Contact Me</CTAButton>
+            <CTAButton href='/contact'>Contact Me</CTAButton>
             {owner.cvUrl && (
               <motion.a
                 whileHover={{ scale: 1.03, backgroundColor: "var(--foreground)", color: "var(--background)" }}

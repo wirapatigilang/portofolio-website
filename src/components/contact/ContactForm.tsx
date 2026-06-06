@@ -114,7 +114,7 @@ export default function ContactForm() {
       {/* ── Full Name ── */}
       <div className="flex flex-col gap-2">
         <label htmlFor="fullName" className="text-sm font-medium text-foreground">
-          Nama Lengkap <span>*</span>
+          Full Name <span>*</span>
         </label>
         <input
           id="fullName"
@@ -122,7 +122,7 @@ export default function ContactForm() {
           className={`min-h-[44px] rounded-md border bg-transparent px-4 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
             errors.fullName ? 'border-red-500' : 'border-foreground/20'
           }`}
-          placeholder="Lalu Gilang Wirapati"
+          placeholder="Alan Turing"
           aria-invalid={errors.fullName ? 'true' : 'false'}
           aria-describedby={errors.fullName ? 'fullName-error' : undefined}
           {...register('fullName')}
@@ -155,7 +155,7 @@ export default function ContactForm() {
           className={`min-h-[44px] rounded-md border bg-transparent px-4 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
             errors.email ? 'border-red-500' : 'border-foreground/20'
           }`}
-          placeholder="gilang.wirapati@email.com"
+          placeholder="alan.turing@gmail.com"
           aria-invalid={errors.email ? 'true' : 'false'}
           aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
@@ -180,7 +180,7 @@ export default function ContactForm() {
       {/* ── Subject ── */}
       <div className="flex flex-col gap-2">
         <label htmlFor="subject" className="text-sm font-medium text-foreground">
-          Subjek Proyek <span>*</span>
+          Subject <span>*</span>
         </label>
         <select
           id="subject"
@@ -191,7 +191,7 @@ export default function ContactForm() {
           aria-describedby={errors.subject ? 'subject-error' : undefined}
           {...register('subject')}
         >
-          <option value="" disabled selected>-- Pilih Subjek --</option>
+          <option value="" disabled selected> - </option>
           {SUBJECT_OPTIONS.map((sub) => (
             <option key={sub} value={sub} className="text-background">
               {sub}
@@ -226,7 +226,7 @@ export default function ContactForm() {
           className={`resize-y rounded-md border bg-transparent px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background ${
             errors.message ? 'border-red-500' : 'border-foreground/20'
           }`}
-          placeholder={`Hai ${owner.name}, saya tertarik berkolaborasi dengan Anda pada proyek...`}
+          placeholder={`Hai ${owner.name}`}
           aria-invalid={errors.message ? 'true' : 'false'}
           aria-describedby={errors.message ? 'message-error' : undefined}
           {...register('message')}
@@ -262,7 +262,7 @@ export default function ContactForm() {
           className="w-full"
           aria-busy={submitStatus === 'submitting'}
         >
-          {submitStatus === 'submitting' ? 'Mengirim...' : 'Kirim Pesan'}
+          {submitStatus === 'submitting' ? 'Sending...' : 'Send'}
         </Button>
       </motion.div>
     </form>
