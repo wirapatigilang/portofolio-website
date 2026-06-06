@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema, type ContactFormData, type ContactSubject } from '@/lib/validations';
 import { owner } from '@/data/owner';
 import Button from '@/components/ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // ============================================================
 // Available Subject Options
@@ -76,21 +77,39 @@ export default function ContactForm() {
       noValidate // Disable default HTML5 validation since we use Zod
     >
       {/* ── Status Messages ── */}
-      {submitStatus === 'success' && (
-        <div className="rounded-md bg-green-500/10 p-4 text-green-600 dark:text-green-400" role="alert" aria-live="polite">
-          <p className="flex items-center gap-2 font-medium">
-            Pesan Anda berhasil dikirim! Saya akan segera membalasnya.
-          </p>
-        </div>
-      )}
-      
-      {submitStatus === 'error' && (
-        <div className="rounded-md bg-red-500/10 p-4 text-red-600 dark:text-red-400" role="alert" aria-live="polite">
-          <p className="flex items-center gap-2 font-medium">
-            {errorMessage}
-          </p>
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {submitStatus === 'success' && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+            animate={{ opacity: 1, height: 'auto', scale: 1 }}
+            exit={{ opacity: 0, height: 0, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            className="rounded-md bg-green-500/10 p-4 text-green-600 dark:text-green-400 overflow-hidden"
+            role="alert"
+            aria-live="polite"
+          >
+            <p className="flex items-center gap-2 font-medium">
+              Pesan Anda berhasil dikirim! Saya akan segera membalasnya.
+            </p>
+          </motion.div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+            animate={{ opacity: 1, height: 'auto', scale: 1 }}
+            exit={{ opacity: 0, height: 0, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            className="rounded-md bg-red-500/10 p-4 text-red-600 dark:text-red-400 overflow-hidden"
+            role="alert"
+            aria-live="polite"
+          >
+            <p className="flex items-center gap-2 font-medium">
+              {errorMessage}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Full Name ── */}
       <div className="flex flex-col gap-2">
@@ -108,11 +127,21 @@ export default function ContactForm() {
           aria-describedby={errors.fullName ? 'fullName-error' : undefined}
           {...register('fullName')}
         />
-        {errors.fullName && (
-          <span id="fullName-error" className="text-sm text-red-500" role="alert">
-            {errors.fullName.message}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.fullName && (
+            <motion.span
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              id="fullName-error"
+              className="text-sm text-red-500 mt-1 block"
+              role="alert"
+            >
+              {errors.fullName.message}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── Email ── */}
@@ -131,11 +160,21 @@ export default function ContactForm() {
           aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
         />
-        {errors.email && (
-          <span id="email-error" className="text-sm text-red-500" role="alert">
-            {errors.email.message}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.email && (
+            <motion.span
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              id="email-error"
+              className="text-sm text-red-500 mt-1 block"
+              role="alert"
+            >
+              {errors.email.message}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── Subject ── */}
@@ -159,11 +198,21 @@ export default function ContactForm() {
             </option>
           ))}
         </select>
-        {errors.subject && (
-          <span id="subject-error" className="text-sm text-red-500" role="alert">
-            {errors.subject.message}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.subject && (
+            <motion.span
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              id="subject-error"
+              className="text-sm text-red-500 mt-1 block"
+              role="alert"
+            >
+              {errors.subject.message}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── Message ── */}
@@ -182,24 +231,40 @@ export default function ContactForm() {
           aria-describedby={errors.message ? 'message-error' : undefined}
           {...register('message')}
         />
-        {errors.message && (
-          <span id="message-error" className="text-sm text-red-500" role="alert">
-            {errors.message.message}
-          </span>
-        )}
+        <AnimatePresence>
+          {errors.message && (
+            <motion.span
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              id="message-error"
+              className="text-sm text-red-500 mt-1 block"
+              role="alert"
+            >
+              {errors.message.message}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── Submit Button ── */}
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        disabled={submitStatus === 'submitting' || !isValid}
-        className="mt-2 w-full sm:w-auto"
-        aria-busy={submitStatus === 'submitting'}
+      <motion.div 
+        whileHover={{ scale: 1.02 }} 
+        whileTap={{ scale: 0.98 }}
+        className="mt-2 w-full sm:w-auto self-start"
       >
-        {submitStatus === 'submitting' ? 'Mengirim...' : 'Kirim Pesan'}
-      </Button>
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          disabled={submitStatus === 'submitting' || !isValid}
+          className="w-full"
+          aria-busy={submitStatus === 'submitting'}
+        >
+          {submitStatus === 'submitting' ? 'Mengirim...' : 'Kirim Pesan'}
+        </Button>
+      </motion.div>
     </form>
   );
 }

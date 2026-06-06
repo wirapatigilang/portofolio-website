@@ -4,7 +4,7 @@ import { CreativeClient } from '@/components/creative/CreativeClient';
 
 export const metadata = generateMetadata({
   title: 'Creative Work | Gilang Wirapati',
-  description: 'Galeri fotografi dan karya videografi oleh Gilang Wirapati.',
+  description: "Gilang Wirapati's Creative Portfolio: A Visual Gallery of Photo & Video.",
   url: '/creative',
 });
 
