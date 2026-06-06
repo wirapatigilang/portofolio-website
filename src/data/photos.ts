@@ -20,4 +20,14 @@ export const photos: Photo[] = [
     category: "Portrait",
     year: 2025,
   },
+  {
+    id: "photo-003",
+    title: "Gradiation Photoshoot",
+    alt: "",
+    src: "/images/photos/portrait-3/IMG_3669.jpg",
+    fullSrc: ["/images/photos/portrait-3/IMG_3669.jpg", "/images/photos/portrait-3/IMG_3583.jpg", "/images/photos/portrait-3/IMG_4150.jpg"],
+
+    category: "Portrait",
+    year: 2025,
+  },
 ];
