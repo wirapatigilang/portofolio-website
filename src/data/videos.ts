@@ -15,7 +15,7 @@ export const videos: Video[] = [
     year: 2025,
   },
   {
-    id: "video-004",
+    id: "video-002",
     title: "Karsa — Mengubah Takdir",
     description:
       '"Karsa: Mengubah Takdir" is an educational digital video project aimed at instilling environmental awareness in the younger generation. The film emphasizes that small actions, such as disposing of trash properly, have a significant impact on the future. Through a compelling narrative, the audience is encouraged to stop being passive and start taking responsibility for environmental cleanliness for the sake of a better future.',
@@ -38,7 +38,20 @@ export const videos: Video[] = [
     category: "Event",
     tools: ["Adobe Premiere Pro", "Adobe After Effect"],
     role: "Online Editor, Offline Editor",
-    year: 2023,
+    year: 2025,
+  },
+  {
+    id: "video-005",
+    title: "Kedai Soemberdadi Commercial Videos",
+    description:
+      "Led the end-to-end video production for Kedai Soemberdadi’s commercial campaign. Serving as the director, videographer, and editor, I conceptualized the visual storytelling, captured high-quality cinematic footage, and crafted a dynamic final cut optimized for social media engagement. The strategic approach to pacing and visual appeal resulted in a highly successful Instagram Reel that organically accumulated over 75,000 views, significantly boosting the brand's digital visibility.",
+    thumbnail: "/images/videos/thumbnails/commercial.jpg",
+    embedUrl: "https://www.youtube.com/embed/V5CMR-e7mBk",
+    externalUrl: "https://youtu.be/V5CMR-e7mBk",
+    category: "Commercial",
+    tools: ["Adobe Premiere Pro", "Adobe After Effect", "Canon M50 mark ii"],
+    role: "Online Editor, Offline Editor, Director, Videographer",
+    year: 2022,
   },
 ];
 
