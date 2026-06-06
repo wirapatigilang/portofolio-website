@@ -35,9 +35,9 @@ export const photos: Photo[] = [
     id: "photo-004",
     title: "Sam Po Kong - Semarang",
     alt: "",
-    src: "/images/photos/street-1/sampokong-1.jpg",
+    src: "/images/photos/street-1/sampokong-6.jpg",
     fullSrc: [
-      "/images/photos/street-1/sampokong-6.jpg",
+      "/images/photos/street-1/sampokong-1.jpg",
       "/images/photos/street-1/sampokong-2.jpg",
       "/images/photos/street-1/sampokong-3.jpg",
       "/images/photos/street-1/sampokong-4.jpg",
