@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import NavigationBar from '@/components/layout/NavigationBar';
 import Footer from '@/components/layout/Footer';
+import ParticleBackground from '@/components/ui/ParticleBackground';
 
 // ============================================================
 // Google Fonts — Inter via next/font (zero layout shift)
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="id" className={inter.variable}>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        <ParticleBackground />
         {/* header + nav landmark — provided by NavigationBar */}
         <NavigationBar />
 
